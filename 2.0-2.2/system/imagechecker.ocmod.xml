@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Image Checker</name>
+    <version>1.0</version>
+	<code>fix_oc_image_checker</code>
+    <author>Toader Bogdan (bogdantoa@yahoo.com)</author>
+    <link>http://www.fixopencart.com</link>
+    <file path="admin/controller/common/menu.php">
+        <operation>
+            <search><![CDATA[
+            $this->load->language('common/menu');
+            ]]></search>
+            <add position="after"><![CDATA[
+			if(!isset($data['image_checker_item']))
+			{
+				$data['image_checker_item']='<li><a href="index.php?route=module/imagechecker&token='.$this->session->data['token'].'">Image Checker</a></li>';
+			}
+            ]]>
+			</add>
+        </operation>
+	</file>		
+	<file path="admin/view/template/common/menu.tpl">
+        <operation>
+            <search><![CDATA[
+            <li><a href="<?php echo $total; ?>"><?php echo $text_total; ?></a></li>
+            ]]></search>
+            <add position="after"><![CDATA[
+			<?php print $image_checker_item; ?>
+            ]]></add>
+        </operation>
+    </file>  
+</modification>

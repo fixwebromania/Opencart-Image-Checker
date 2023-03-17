@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Image Checker</name>
+    <version>1.0</version>
+    <author>Toader Bogdan (bogdantoa@yahoo.com)</author>
+    <link>http://www.fixopencart.com</link>
+	<code>fix_oc_image_checker</code>
+    <file path="admin/controller/common/column_left.php">
+        <operation>
+            <search><![CDATA[
+			if ($catalog) {
+            ]]></search>
+            <add position="before"><![CDATA[
+				$data['menus'][] = array(
+					'id'       => 'menu-ic',
+					'icon'	   => 'fa-tags', 
+					'name'	   => "Image Checker",
+					'href'     => $this->url->link('extension/module/imagechecker', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+            ]]>
+			</add>
+        </operation>
+	</file>		  
+</modification>
